@@ -49,5 +49,8 @@ public class Hunger : MonoBehaviour
     }
   }
 
+  public float getHunger(){
+    return this.currentHunger;
+  }
 
 }
