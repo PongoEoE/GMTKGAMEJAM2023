@@ -9,7 +9,7 @@ public class Hunger : MonoBehaviour
 
     //https://www.youtube.com/watch?v=hsJs7dvzgMM
   [Header("Hunger")]
-  [SerializeField] private float maxHunger;
+  [SerializeField] private float maxHunger = 100f;
   [SerializeField] private float hungerRate = 1f;
   private float currentHunger;
   public float hungerPercent => currentHunger / maxHunger;
