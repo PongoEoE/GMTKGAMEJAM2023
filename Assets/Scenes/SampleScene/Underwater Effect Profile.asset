@@ -89,26 +89,26 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 2
   gaussianStart:
-    m_OverrideState: 0
-    m_Value: 10
-  gaussianEnd:
-    m_OverrideState: 0
-    m_Value: 30
-  gaussianMaxRadius:
-    m_OverrideState: 0
-    m_Value: 1
-  highQualitySampling:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
+  gaussianEnd:
+    m_OverrideState: 1
+    m_Value: 42.6
+  gaussianMaxRadius:
+    m_OverrideState: 1
+    m_Value: 1.5
+  highQualitySampling:
+    m_OverrideState: 1
+    m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 8.52
   aperture:
     m_OverrideState: 1
-    m_Value: 5.8
+    m_Value: 7.5
   focalLength:
     m_OverrideState: 1
-    m_Value: 53
+    m_Value: 172
   bladeCount:
     m_OverrideState: 0
     m_Value: 5
@@ -158,7 +158,7 @@ MonoBehaviour:
     m_Value: 100
   tint:
     m_OverrideState: 1
-    m_Value: 86
+    m_Value: 87
 --- !u!114 &3175358093315407509
 MonoBehaviour:
   m_ObjectHideFlags: 3
