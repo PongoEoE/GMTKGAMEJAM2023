@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEvents;
+using UnityEngine.Events;
 
 
 public class Hunger : MonoBehaviour
@@ -24,9 +24,9 @@ public class Hunger : MonoBehaviour
   public float staminaPercent => currentStamina / maxStamina;
 
   [Header("Player References")]
-  [SerializeField] private StarterAssetsInputs playerInput;
+  //[SerializeField] private StarterAssetsInputs playerInput;
 
-  public static UnityAction OnPlayerDeath;
+  public static UnityAction PlayerDeath;
 
 
   private void Start() 
@@ -44,7 +44,8 @@ public class Hunger : MonoBehaviour
 
     if (currentHunger <= 0)
     {
-
+        PlayerDeath.Invoke();
+        currentHunger = 0;
     }
   }
 
