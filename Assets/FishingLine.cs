@@ -16,7 +16,12 @@ public class FishingLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.position) < 8) {
+        Vector3 ppos = player.position;
+        ppos.y = 0f;
+        Vector3 tpos = transform.position;
+        tpos.y = 0f;
+
+        if(Vector3.Distance(tpos, ppos) < 15f) {
             line.SetActive(true);
         } else {
             line.SetActive(false);

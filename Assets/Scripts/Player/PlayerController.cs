@@ -104,10 +104,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void Dash() {
-        //if (hunger.staminaPercent >= 25) {
-            //hunger.setStamina(-25);
+        if (hunger.getStamina() >= 25) {
+            hunger.setStamina(-25);
             timeSinceLastDash = 0f;
             DashVector = transform.up * dashForce;
-        //}
+        }
     }
 }

@@ -24,6 +24,7 @@ public class Hunger : MonoBehaviour
   [SerializeField] private float staminaRate = 1f;
   [SerializeField] private float staminaRecharge = 2f;
   [SerializeField] private float staminaRechargeDelay = 1f;
+  private float currentRechargeDelay = 0f;
   private float currentStamina;
   private float currentStaminaDelayCounter;
   public float staminaPercent => currentStamina / maxStamina;
@@ -52,6 +53,12 @@ public class Hunger : MonoBehaviour
         PlayerDeath.Invoke();
         currentHunger = 0;
     }
+
+    currentRechargeDelay += Time.deltaTime;
+    if(currentRechargeDelay >= staminaRechargeDelay && currentStamina < maxStamina) {
+      currentStamina += staminaRecharge*Time.deltaTime;
+      currentStamina = Mathf.Min(currentStamina, maxStamina);
+    }
   }
 
   public float getHunger(){
@@ -73,6 +80,13 @@ public class Hunger : MonoBehaviour
     public void setStamina (float add)
   {
     currentStamina += add;
+    if (add < 0f) {
+      currentRechargeDelay = 0f;
+    }
+  }
+
+  public float getStamina(){
+    return currentStamina;
   }
 
   public void eaten()

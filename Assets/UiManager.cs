@@ -26,6 +26,7 @@ public class UiManager : MonoBehaviour
     void FixedUpdate()
     {
         SetHunger(hunger.getHunger());
+        SetStamina(hunger.getStamina());
     }
 
     void Update()
@@ -38,7 +39,7 @@ public class UiManager : MonoBehaviour
     }
 
     public void SetStamina(float stamina) {
-        staminaUI.rectTransform.sizeDelta = new Vector2((stamina/100) * 250f, 25f);
+        staminaUI.rectTransform.sizeDelta = new Vector2((stamina/100) * 250f, 15f);
     }
 
 
