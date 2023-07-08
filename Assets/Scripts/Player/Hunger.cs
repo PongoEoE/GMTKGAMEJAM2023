@@ -7,7 +7,12 @@ using UnityEngine.Events;
 public class Hunger : MonoBehaviour
 {
 
+
     //https://www.youtube.com/watch?v=hsJs7dvzgMM
+
+  [SerializeField] private float numEaten;
+  [SerializeField] private float numHooked;  
+
   [Header("Hunger")]
   [SerializeField] private float maxHunger = 100f;
   [SerializeField] private float hungerRate = 1f;
@@ -55,6 +60,7 @@ public class Hunger : MonoBehaviour
 
   public void setHunger(float add)
   {
+    eaten();
     if (currentHunger + add > 100)
     {
       currentHunger = 100f;
@@ -64,4 +70,13 @@ public class Hunger : MonoBehaviour
     
   }
 
+  public void eaten()
+  {
+    numEaten++;
+  }
+
+  public void hooked()
+  {
+    numHooked++;
+  }
 }

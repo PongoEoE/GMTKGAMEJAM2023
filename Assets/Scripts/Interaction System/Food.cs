@@ -11,6 +11,9 @@ public class Food : MonoBehaviour, IInteractable
 
     [SerializeField] private RectTransform Ping;
     [SerializeField] private bool isHooked;
+    
+
+
     private FoodScatterer scatterer;
 
     //[SerializeField] float currentHunger = player.getComponent<Hunger>().getHunger();
@@ -37,6 +40,7 @@ public class Food : MonoBehaviour, IInteractable
         //Food gives 25% with every food
         hunger.setHunger(25f);
         if(isHooked){
+            hunger.hooked();
             Debug.Log("Ouch");
             //do stuff
         }
