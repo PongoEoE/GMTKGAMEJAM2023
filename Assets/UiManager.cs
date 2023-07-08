@@ -31,7 +31,7 @@ public class UiManager : MonoBehaviour
     void Update()
     {
         currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
-        timerText.text = currentTime.ToString();
+        timerText.text = currentTime.ToString("0.00");
     }
     public void SetHunger(float hunger) {
         hungerUI.rectTransform.sizeDelta = new Vector2((hunger/100) * 250f, 25f);
