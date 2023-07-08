@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.6, y: 0}
+  m_AnchoredPosition: {x: -17.6, y: 31.8}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &104753783
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0f31aa72ebfce3640a14d55ff47643b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a0c092678fb38a4a88be3548003a235, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -431,6 +431,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   PPX: {fileID: 0}
   myAnimator: {fileID: 0}
+  catcher: {fileID: 0}
 --- !u!114 &560969880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -17.9, y: 49.8}
-  m_SizeDelta: {x: 20, y: 1}
+  m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1497137936
 GameObject:
@@ -1639,7 +1640,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -17.8, y: -50.3}
-  m_SizeDelta: {x: 20, y: 1}
+  m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &419347201251121610
 PrefabInstance:
@@ -1658,6 +1659,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1497137937}
     - target: {fileID: 4101354972096022517, guid: f2d9251b3fbcd99488f7573f8a274d02, type: 3}
+      propertyPath: hookSize
+      value: 0.33333
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101354972096022517, guid: f2d9251b3fbcd99488f7573f8a274d02, type: 3}
       propertyPath: topPivot
       value: 
       objectReference: {fileID: 1437699474}
@@ -1669,6 +1674,10 @@ PrefabInstance:
       propertyPath: bottomPivot
       value: 
       objectReference: {fileID: 2105323932}
+    - target: {fileID: 4101354972096022517, guid: f2d9251b3fbcd99488f7573f8a274d02, type: 3}
+      propertyPath: fishPosition
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4101354972096022517, guid: f2d9251b3fbcd99488f7573f8a274d02, type: 3}
       propertyPath: hookSpriteRenderer
       value: 
