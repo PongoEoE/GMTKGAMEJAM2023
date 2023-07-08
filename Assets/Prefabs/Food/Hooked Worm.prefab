@@ -448,3 +448,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: 
   Ping: {fileID: 6789954404059151255}
+  isHooked: 1

@@ -37,8 +37,14 @@ public class FoodScatterer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Recycle(GameObject food)
     {
-        
+            Vector2 pos = Random.insideUnitCircle*270;
+            Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 30f), pos.y);
+            if(!Physics.CheckSphere(finalPos, 1f)) {
+                food.transform.position = finalPos;
+            } else {
+                Recycle(food);
+            }
     }
 }
