@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     float moveY;
     float moveZ;
 
+    [Header("Animation")]
+    [SerializeField]private Animator myAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +71,12 @@ public class PlayerController : MonoBehaviour
             moveX = Input.GetAxis("Horizontal");
             moveY = Input.GetAxis("Vertical");
             moveZ = Input.GetAxis("Forward");
+            
+            if(moveX != 0 || moveY != 0 || moveZ != 0) {
+                myAnimator.SetFloat("Speed", 1f);
+            } else {
+                myAnimator.SetFloat("Speed", 0.35f);
+            }
 
             //x y z are screwed up bc I moved the capsule down!!!
             t.Translate(new Vector3 (-moveX, moveZ, 0) * Time.deltaTime * speed);
