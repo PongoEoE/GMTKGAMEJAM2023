@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Hunger;
+
 
 public class Food : MonoBehaviour, IInteractable
 {
 
+    public GameObject player;
     [SerializeField] private string prompt;
     public string InteractionPrompt => prompt;
 
-    [SerializeField] float currentHunger = Hunger.getHunger();
+    //[SerializeField] float currentHunger = player.getComponent<Hunger>().getHunger();
 
     public bool Interact (Interactor interactor)
     {
@@ -22,7 +23,7 @@ public class Food : MonoBehaviour, IInteractable
 
     public void SetHunger(float hunger)
     {
-        hunger += ;
+        //hunger += ;
 
     }
 
