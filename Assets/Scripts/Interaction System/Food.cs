@@ -6,7 +6,6 @@ using UnityEngine;
 public class Food : MonoBehaviour, IInteractable
 {
 
-    public GameObject player;
     [SerializeField] private string prompt;
     public string InteractionPrompt => prompt;
 
@@ -15,16 +14,15 @@ public class Food : MonoBehaviour, IInteractable
     public bool Interact (Interactor interactor)
     {
         Debug.Log(message:"Food ate");
+        
+        Hunger hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
+        //Food gives 25% with every food
+        hunger.setHunger(25f);
         GameObject.Destroy(gameObject);
 
         return true;
     }
 
 
-    public void SetHunger(float hunger)
-    {
-        //hunger += ;
-
-    }
-
+    
 }

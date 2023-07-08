@@ -11,7 +11,7 @@ public class Hunger : MonoBehaviour
   [Header("Hunger")]
   [SerializeField] private float maxHunger = 100f;
   [SerializeField] private float hungerRate = 1f;
-  private float currentHunger;
+  [SerializeField] float currentHunger;
   public float hungerPercent => currentHunger / maxHunger;
 
   [Header("Stamina")]
@@ -51,6 +51,11 @@ public class Hunger : MonoBehaviour
 
   public float getHunger(){
     return this.currentHunger;
+  }
+
+  public void setHunger(float add)
+  {
+    currentHunger += add;
   }
 
 }
