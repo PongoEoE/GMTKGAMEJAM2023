@@ -55,7 +55,13 @@ public class Hunger : MonoBehaviour
 
   public void setHunger(float add)
   {
-    currentHunger += add;
+    if (currentHunger + add > 100)
+    {
+      currentHunger = 100f;
+    } else {
+      currentHunger += add;
+    }
+    
   }
 
 }
