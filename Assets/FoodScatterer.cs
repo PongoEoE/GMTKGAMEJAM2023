@@ -16,7 +16,7 @@ public class FoodScatterer : MonoBehaviour
             Vector2 pos = Random.insideUnitCircle*270;
             Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 30f), pos.y);
             if(!Physics.CheckSphere(finalPos, 1f)) {
-                GameObject currentFood = GameObject.Instantiate(food[Random.Range(0,1)], finalPos, Quaternion.identity);
+                GameObject currentFood = GameObject.Instantiate(food[Random.Range(0,2)], finalPos, Quaternion.identity);
                 currentFood.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
             } else {
                 i--;
@@ -28,7 +28,7 @@ public class FoodScatterer : MonoBehaviour
             Vector2 pos = Random.insideUnitCircle*270;
             Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 30f), pos.y);
             if(!Physics.CheckSphere(finalPos, 1f)) {
-                GameObject currentFood = GameObject.Instantiate(hooks[Random.Range(0,1)], finalPos, Quaternion.identity);
+                GameObject currentFood = GameObject.Instantiate(hooks[Random.Range(0,2)], finalPos, Quaternion.identity);
                 currentFood.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
             } else {
                 i--;
