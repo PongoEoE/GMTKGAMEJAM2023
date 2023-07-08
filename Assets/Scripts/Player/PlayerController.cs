@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
     Transform t;
+    Rigidbody rb;
 
     [Header("Player Rotation")]
     public float sensitivity = 1;
@@ -29,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 DashVector;
     private Hunger hunger;
+    private bool lockControls = false;
+
+    [SerializeField] private UnityEngine.Rendering.Volume PPX;
 
     [Header("Animation")]
     [SerializeField]private Animator myAnimator;
@@ -37,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         t = this.transform;
+        rb = GetComponent<Rigidbody>();
         hunger = gameObject.GetComponent<Hunger>();
 
         //this causes the cursor to disappear -- remove if stupid
@@ -64,6 +70,20 @@ public class PlayerController : MonoBehaviour
         }
 
         timeSinceLastDash += Time.deltaTime;
+        float depthWeight = Mathf.InverseLerp(0f, 60f, transform.position.y);
+        PPX.weight = Mathf.Lerp(1, 0.7f, depthWeight);
+        if(Camera.main.transform.position.y > 60f) {
+            PPX.weight = 0f;
+        }
+
+        if(transform.position.y > 60f) {
+            rb.useGravity = true;
+            lockControls = true;
+        } else {
+            rb.useGravity = false;
+            lockControls = false;
+        }
+        
     }
 
     void LookAround()
@@ -85,7 +105,18 @@ public class PlayerController : MonoBehaviour
             moveY = Input.GetAxis("Vertical");
             moveZ = Input.GetAxis("Forward");
             
-            if(moveX != 0 || moveY != 0 || moveZ != 0) {
+
+
+            //x y z are screwed up bc I moved the capsule down!!!
+            //t.Translate(new Vector3 (-moveX, moveZ, 0) * Time.deltaTime * speed);
+            //t.Translate(new Vector3 (0, moveY, 0) * Time.deltaTime * speed, Space.World);
+            Vector3 finalVelocity = (transform.up*moveZ + transform.right*-moveX + Vector3.up*moveY)*speed;
+            if(!lockControls) {
+            rb.velocity = finalVelocity;
+            Debug.Log(finalVelocity);
+            }
+
+            if(finalVelocity.magnitude != 0f) {
                 myAnimator.SetFloat("Speed", 1f);
             } else {
                 myAnimator.SetFloat("Speed", 0.35f);
@@ -95,11 +126,11 @@ public class PlayerController : MonoBehaviour
                 myAnimator.SetFloat("Speed", dashCurve.Evaluate(timeSinceLastDash)+1f);
             }
 
-            //x y z are screwed up bc I moved the capsule down!!!
-            t.Translate(new Vector3 (-moveX, moveZ, 0) * Time.deltaTime * speed);
-            t.Translate(new Vector3 (0, moveY, 0) * Time.deltaTime * speed, Space.World);
             Vector3 dashFinal = Vector3.Lerp(Vector3.zero, DashVector, dashCurve.Evaluate(timeSinceLastDash));
-            transform.position = transform.position + (dashFinal*Time.deltaTime);
+            if(!lockControls) {
+            rb.velocity += dashFinal;
+            }
+            //transform.position = transform.position + (dashFinal*Time.deltaTime);
         }
     }
 

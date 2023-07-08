@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 465762590879220444}
   - component: {fileID: 8220353604396493284}
   - component: {fileID: 8441544346130062529}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 7054066500681015538}
   - component: {fileID: 2652406591247347071}
   - component: {fileID: 1603139968371902923}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Ping
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!1 &6898395795185651536
+--- !u!1 &6730877606663022136
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,49 +184,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8290290491627206330}
-  - component: {fileID: 8981949024414430759}
-  - component: {fileID: 4481403594622831749}
-  - component: {fileID: 1536757324458372767}
-  - component: {fileID: 463252518195764892}
+  - component: {fileID: 681203269602457143}
+  - component: {fileID: 2486985851746736186}
+  - component: {fileID: 3990979985794898803}
   m_Layer: 6
-  m_Name: Worm
+  m_Name: Worm Obj
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8290290491627206330
+--- !u!4 &681203269602457143
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6898395795185651536}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10.09, y: -12.02, z: 14.65}
+  m_GameObject: {fileID: 6730877606663022136}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 212927608701284490}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Children: []
+  m_Father: {fileID: 8290290491627206330}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!33 &8981949024414430759
+--- !u!33 &2486985851746736186
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6898395795185651536}
+  m_GameObject: {fileID: 6730877606663022136}
   m_Mesh: {fileID: -3925668205985266290, guid: 6fc18d233dea4974dba0351555fdd8d6, type: 3}
---- !u!23 &4481403594622831749
+--- !u!23 &3990979985794898803
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6898395795185651536}
+  m_GameObject: {fileID: 6730877606663022136}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -262,6 +259,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6898395795185651536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8290290491627206330}
+  - component: {fileID: 1536757324458372767}
+  - component: {fileID: 463252518195764892}
+  m_Layer: 6
+  m_Name: Worm
+  m_TagString: Food
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8290290491627206330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898395795185651536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.09, y: -12.02, z: 14.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 681203269602457143}
+  - {fileID: 212927608701284490}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1536757324458372767
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -297,3 +329,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prompt: 
   Ping: {fileID: 7054066500681015538}
+  isHooked: 0

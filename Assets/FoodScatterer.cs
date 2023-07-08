@@ -14,10 +14,10 @@ public class FoodScatterer : MonoBehaviour
         for (int i = 0; i < ammountNormal; i++)
         {
             Vector2 pos = Random.insideUnitCircle*270;
-            Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 30f), pos.y);
+            Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 15f), pos.y);
             if(!Physics.CheckSphere(finalPos, 1f)) {
                 GameObject currentFood = GameObject.Instantiate(food[Random.Range(0,2)], finalPos, Quaternion.identity);
-                currentFood.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
+                //currentFood.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
             } else {
                 i--;
             } 
@@ -26,10 +26,10 @@ public class FoodScatterer : MonoBehaviour
         for (int i = 0; i < ammountHooked; i++)
         {
             Vector2 pos = Random.insideUnitCircle*270;
-            Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 30f), pos.y);
+            Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 15f), pos.y);
             if(!Physics.CheckSphere(finalPos, 1f)) {
                 GameObject currentFood = GameObject.Instantiate(hooks[Random.Range(0,2)], finalPos, Quaternion.identity);
-                currentFood.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
+                //currentFood.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
             } else {
                 i--;
             } 
@@ -40,7 +40,8 @@ public class FoodScatterer : MonoBehaviour
     public void Recycle(GameObject food)
     {
             Vector2 pos = Random.insideUnitCircle*270;
-            Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 30f), pos.y);
+            Vector3 finalPos = new Vector3(pos.x, Random.Range(-2f, 15f), pos.y);
+            Debug.Log(!Physics.CheckSphere(finalPos, 1f));
             if(!Physics.CheckSphere(finalPos, 1f)) {
                 food.transform.position = finalPos;
             } else {
