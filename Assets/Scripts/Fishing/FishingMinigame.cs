@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishingMinigame : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] Transform fish;
     // Start is called before the first frame update
 
-    float fishPosition;
+    [SerializeField]float fishPosition;
     float fishDestination;
     float fishTimer;
 
@@ -32,7 +33,7 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] float hookGravityPower = .005f;
     [SerializeField] float hookProgressDegradationPower = 6f;
 
-    [SerializeField] SpriteRenderer hookSpriteRenderer;
+    [SerializeField] Image hookSpriteRenderer;
     [SerializeField] Transform progressBarContainer;
 
     bool pause = false;
@@ -73,11 +74,16 @@ public class FishingMinigame : MonoBehaviour
             }
         }
 
-        if (hookProgress >= 60f)
+        if (fishPosition == 1 || fishPosition == 0 )
+        {
+            hookProgress += hookPower * Time.deltaTime;
+        }
+
+        if (hookProgress >= 1f)
         {
             Win();
         }
-        hookProgress = Mathf.Clamp(hookProgress, 0f, 60f);
+        hookProgress = Mathf.Clamp(hookProgress, 0f, 1f);
     }
 
     private void Win()
@@ -93,12 +99,12 @@ public class FishingMinigame : MonoBehaviour
     }
     private void Resize()
     {
-        Bounds b = hookSpriteRenderer.bounds;
-        float ySize = b.size.y;
-        Vector3 ls = hook.localScale;
-        float distance = Vector3.Distance(topPivot.position, bottomPivot.position);
-        ls.y = (distance / ySize * hookSize);
-        hook.localScale = ls;    
+        // Bounds b = hookSpriteRenderer.bounds;
+        // float ySize = b.size.y;
+        // Vector3 ls = hook.localScale;
+        // float distance = Vector3.Distance(topPivot.position, bottomPivot.position);
+        // ls.y = (distance / ySize * hookSize);
+        // hook.localScale = ls;    
 
     }
 
