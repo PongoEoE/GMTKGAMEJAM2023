@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField]private Animator myAnimator;
+    [SerializeField] private GameObject catcher;
 
     // Start is called before the first frame update
     void Start()
@@ -113,7 +114,6 @@ public class PlayerController : MonoBehaviour
             Vector3 finalVelocity = (transform.up*moveZ + transform.right*-moveX + Vector3.up*moveY)*speed;
             if(!lockControls) {
             rb.velocity = finalVelocity;
-            Debug.Log(finalVelocity);
             }
 
             if(finalVelocity.magnitude != 0f) {
@@ -140,5 +140,17 @@ public class PlayerController : MonoBehaviour
             timeSinceLastDash = 0f;
             DashVector = transform.up * dashForce;
         }
+    }
+
+    public void Catch(){
+        Vector3 point = transform.position;
+        point.y = 65f;
+        Instantiate(catcher, point, Quaternion.identity);
+    }
+
+    public void Die(){
+        myAnimator.SetTrigger("Starve");
+        lockControls = true;
+        sensitivity = 0f;
     }
 }

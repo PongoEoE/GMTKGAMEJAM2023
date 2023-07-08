@@ -19,15 +19,17 @@ public class Food : MonoBehaviour, IInteractable
     //[SerializeField] float currentHunger = player.getComponent<Hunger>().getHunger();
     private Transform player;
     private float offset;
+    private MeshRenderer myMR;
 
     private void Start() {
         transform.GetChild(0).localEulerAngles = new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+        myMR = transform.GetChild(0).GetComponent<MeshRenderer>();
         scatterer = GameObject.FindGameObjectWithTag("Scatterer").GetComponent<FoodScatterer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         offset = Random.Range(0f, 360f);
     }
     private void FixedUpdate() {
-        if(Vector3.Distance(transform.position, player.position) < 25 && Mathf.Sin(Time.time*4f)>0.5f) {
+        if(Vector3.Distance(transform.position, player.position) < 25 && Mathf.Sin(Time.time*4f)>0.5f && myMR.isVisible) {
             Ping.transform.position = Camera.main.WorldToScreenPoint(transform.position);
             Ping.gameObject.SetActive(true);
         } else {
@@ -50,12 +52,10 @@ public class Food : MonoBehaviour, IInteractable
             hunger.hooked();
             Debug.Log("Ouch");
             //do stuff
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Catch();
         }
         scatterer.Recycle(gameObject);
 
         return true;
     }
-
-
-    
 }

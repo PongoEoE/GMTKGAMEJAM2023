@@ -50,7 +50,8 @@ public class Hunger : MonoBehaviour
 
     if (currentHunger <= 0)
     {
-        PlayerDeath.Invoke();
+        //PlayerDeath.Invoke();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
         currentHunger = 0;
     }
 
