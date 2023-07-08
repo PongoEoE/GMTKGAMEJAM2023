@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - UiManager
+  - Scatterer
   layers:
   - Default
   - TransparentFX
