@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             moveZ = Input.GetAxis("Forward");
 
             //x y z are screwed up bc I moved the capsule down!!!
-            t.Translate(new Vector3 (moveX, moveZ, 0) * Time.deltaTime * speed);
+            t.Translate(new Vector3 (-moveX, moveZ, 0) * Time.deltaTime * speed);
             t.Translate(new Vector3 (0, moveY, 0) * Time.deltaTime * speed, Space.World);
 
         }
