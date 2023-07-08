@@ -133,10 +133,10 @@ MonoBehaviour:
   active: 1
   lift:
     m_OverrideState: 1
-    m_Value: {x: 0.6453824, y: 0.70721394, z: 1, w: 0}
+    m_Value: {x: 0.6461582, y: 0.7493329, z: 1, w: 0}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 0.7430322, y: 1, z: 0.96252304, w: 0}
+    m_Value: {x: 0.6445951, y: 1, z: 0.76444656, w: 0}
   gain:
     m_OverrideState: 1
     m_Value: {x: 0.7806008, y: 1, z: 0.88976413, w: 0}
@@ -173,29 +173,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   redOutRedIn:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 76
   redOutGreenIn:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -21
   redOutBlueIn:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -200
   greenOutRedIn:
     m_OverrideState: 0
     m_Value: 0
   greenOutGreenIn:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 113
   greenOutBlueIn:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -36
   blueOutRedIn:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 38
   blueOutGreenIn:
     m_OverrideState: 0
     m_Value: 0
   blueOutBlueIn:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 61

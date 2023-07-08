@@ -20,9 +20,15 @@ public class PlayerController : MonoBehaviour
 
     [Header("Player Movement")]
     public float speed = 1;
+    public float dashForce = 30f;
+    public AnimationCurve dashCurve;
+    private float timeSinceLastDash = 1f;
     float moveX;
     float moveY;
     float moveZ;
+
+    private Vector3 DashVector;
+    private Hunger hunger;
 
     [Header("Animation")]
     [SerializeField]private Animator myAnimator;
@@ -31,6 +37,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         t = this.transform;
+        hunger = gameObject.GetComponent<Hunger>();
 
         //this causes the cursor to disappear -- remove if stupid
         Cursor.lockState = CursorLockMode.Locked;
@@ -51,6 +58,12 @@ public class PlayerController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
         }
+
+        if(Input.GetMouseButtonDown(0)) {
+            Dash();
+        }
+
+        timeSinceLastDash += Time.deltaTime;
     }
 
     void LookAround()
@@ -78,10 +91,23 @@ public class PlayerController : MonoBehaviour
                 myAnimator.SetFloat("Speed", 0.35f);
             }
 
+            if(timeSinceLastDash < 0.8f) {
+                myAnimator.SetFloat("Speed", dashCurve.Evaluate(timeSinceLastDash)+1f);
+            }
+
             //x y z are screwed up bc I moved the capsule down!!!
             t.Translate(new Vector3 (-moveX, moveZ, 0) * Time.deltaTime * speed);
             t.Translate(new Vector3 (0, moveY, 0) * Time.deltaTime * speed, Space.World);
-
+            Vector3 dashFinal = Vector3.Lerp(Vector3.zero, DashVector, dashCurve.Evaluate(timeSinceLastDash));
+            transform.position = transform.position + (dashFinal*Time.deltaTime);
         }
+    }
+
+    void Dash() {
+        //if (hunger.staminaPercent >= 25) {
+            //hunger.setStamina(-25);
+            timeSinceLastDash = 0f;
+            DashVector = transform.up * dashForce;
+        //}
     }
 }

@@ -70,6 +70,11 @@ public class Hunger : MonoBehaviour
     
   }
 
+    public void setStamina (float add)
+  {
+    currentStamina += add;
+  }
+
   public void eaten()
   {
     numEaten++;
