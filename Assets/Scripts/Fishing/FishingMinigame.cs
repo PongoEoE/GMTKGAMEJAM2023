@@ -24,6 +24,7 @@ public class FishingMinigame : MonoBehaviour
 
     float hookPosition;
     [SerializeField] float hookSize = 0.1f;
+    [SerializeField] float fishSize = 1f;
     [SerializeField] float hookPower = 5f;
     float hookProgress;
     float hookPullVelocity;
@@ -166,17 +167,17 @@ public class FishingMinigame : MonoBehaviour
 
         fishPosition += hookPullVelocity;
 
-        if(fishPosition - hookSize / 2 <0f && hookPullVelocity < 0f)
+        if(fishPosition - fishSize / 2 <0f && hookPullVelocity < 0f)
         {
             hookPullVelocity = 0f;
         }
 
-        if(fishPosition + hookSize / 2 >= 1f && hookPullVelocity > 1f)
+        if(fishPosition + fishSize / 2 >= 1f && hookPullVelocity > 1f)
         {
             hookPullVelocity = 0f;
         }
 
-        fishPosition = Mathf.Clamp(fishPosition, hookSize / 2 ,60 - hookSize/2);
+        fishPosition = Mathf.Clamp(fishPosition, fishSize / 2 ,1 - fishSize/2);
         fish.position = Vector3.Lerp(bottomPivot.position, topPivot.position, fishPosition);
     }
 }
