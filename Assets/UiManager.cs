@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UiManager : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class UiManager : MonoBehaviour
     [SerializeField] private RawImage hungerUI;
     [SerializeField] private RawImage staminaUI;
     private Hunger hunger;
+
+    [Header("Component")]
+    public TextMeshProUGUI timerText;
+
+    [Header("Timer Settings")]
+    public float currentTime;
+    public bool countDown;
     void Start()
     {
         hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
@@ -20,6 +28,11 @@ public class UiManager : MonoBehaviour
         SetHunger(hunger.getHunger());
     }
 
+    void Update()
+    {
+        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
+        timerText.text = currentTime.ToString();
+    }
     public void SetHunger(float hunger) {
         hungerUI.rectTransform.sizeDelta = new Vector2((hunger/100) * 250f, 25f);
     }
@@ -27,4 +40,8 @@ public class UiManager : MonoBehaviour
     public void SetStamina(float stamina) {
         staminaUI.rectTransform.sizeDelta = new Vector2((stamina/100) * 250f, 25f);
     }
+
+
+
+
 }
