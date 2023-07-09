@@ -43,10 +43,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject fishingGame;
     public bool isDead = false;
+    private AudioSource wooshSFX;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         t = this.transform;
         rb = GetComponent<Rigidbody>();
         hunger = gameObject.GetComponent<Hunger>();
@@ -63,6 +65,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    
         LookAround();
 
         //debug
@@ -153,6 +157,9 @@ public class PlayerController : MonoBehaviour
             hunger.setStamina(-25);
             timeSinceLastDash = 0f;
             DashVector = transform.up * dashForce;
+
+            wooshSFX = GameObject.FindGameObjectWithTag("Player").transform.GetChild(5).GetComponent<AudioSource>();
+            wooshSFX.Play();
         }
     }
 

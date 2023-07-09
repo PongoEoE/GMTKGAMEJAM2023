@@ -22,6 +22,9 @@ public class Food : MonoBehaviour, IInteractable
     private Transform player;
     private float offset;
     private MeshRenderer myMR;
+    private AudioSource eatSFX;
+
+    
 
     private void Start() {
         particles.transform.parent = null;
@@ -46,6 +49,9 @@ public class Food : MonoBehaviour, IInteractable
 
     public bool Interact (Interactor interactor)
     {
+        eatSFX = GameObject.FindGameObjectWithTag("Player").transform.GetChild(4).GetComponent<AudioSource>();
+        eatSFX.Play();
+
         Debug.Log(message:"Food ate");
         
         Hunger hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
