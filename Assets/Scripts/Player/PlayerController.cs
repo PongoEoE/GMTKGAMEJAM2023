@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject fishingGame;
     public bool isDead = false;
     private AudioSource wooshSFX;
+    private AudioSource StarveSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -173,6 +174,9 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         hunger.hooked();
         myAnimator.SetTrigger("Starve");
+        StarveSFX = GameObject.FindGameObjectWithTag("Player").transform.GetChild(6).GetComponent<AudioSource>();
+        StarveSFX.Play();
+
         lockControls = true;
         sensitivity = 0f;
         StartCoroutine(QueueEndScreen());
