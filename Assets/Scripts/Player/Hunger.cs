@@ -90,6 +90,9 @@ public class Hunger : MonoBehaviour
     if (add < 0f) {
       currentRechargeDelay = 0f;
     }
+    if(currentStamina > 100f) {
+      currentStamina = 100f;
+    }
   }
 
   public float getStamina(){

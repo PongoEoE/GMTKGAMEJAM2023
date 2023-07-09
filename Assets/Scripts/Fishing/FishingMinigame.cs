@@ -29,7 +29,7 @@ public class FishingMinigame : MonoBehaviour
     float hookPosition;
     [SerializeField] float hookSize = 0.1f;
     [SerializeField] float fishSize = 1f;
-    [SerializeField] float hookPower = 5f;
+    private float hookPower = 5f;
     float hookProgress;
     float hookPullVelocity;
     [SerializeField] float hookPullPower = 0.01f;
@@ -45,6 +45,7 @@ public class FishingMinigame : MonoBehaviour
 
     public bool gotAway;
     private AudioSource miniSFX;
+    private Hunger hunger;
 
     private void Update()
     {
@@ -61,12 +62,13 @@ public class FishingMinigame : MonoBehaviour
         pause = false;
         gameObject.SetActive(false);
         Resize();
+        hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
     }
 
     void OnEnable()
     {
 
-        
+        hookPower = Mathf.Lerp(0.4f, 0.15f, hunger.getStamina()/100f);
         if (gotAway == true)
         {
             failTimer = 10f;

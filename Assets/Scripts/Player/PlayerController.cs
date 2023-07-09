@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         //debug
         if (Input.GetKey(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
         }
 
         if(Input.GetMouseButtonDown(0) && !lockControls) {

@@ -57,6 +57,7 @@ public class Food : MonoBehaviour, IInteractable
         Hunger hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
         //Food gives 25% with every food
         hunger.setHunger(25f);
+        hunger.setStamina(15f);
         if(isHooked){
             hunger.hooked();
             
