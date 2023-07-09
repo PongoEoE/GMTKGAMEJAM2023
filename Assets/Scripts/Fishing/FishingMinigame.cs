@@ -101,19 +101,19 @@ public class FishingMinigame : MonoBehaviour
             }
         }
 
-        if (fishPosition == 1 || fishPosition == 0 )
+        if (fishPosition > 0.85f || fishPosition < 0.15f )
         {
             hookProgress += hookPower * Time.deltaTime;
 
         }
 
-        if(fishPosition == 0) {
+        if(fishPosition < 0.15f) {
             crab.SetBool("Action", true);
         } else {
             crab.SetBool("Action", false);
         }
 
-        if(fishPosition == 1) {
+        if(fishPosition > 0.85f) {
             net.SetBool("Action", true);
         } else {
             net.SetBool("Action", false);
@@ -211,7 +211,7 @@ public class FishingMinigame : MonoBehaviour
 
         // fish.position = Vector3.Lerp(bottomPivot.position, topPivot.position, fishPosition);
                 
-        if (Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.Space))
         {
             hookPullVelocity += hookPullPower * Time.deltaTime;
         }
