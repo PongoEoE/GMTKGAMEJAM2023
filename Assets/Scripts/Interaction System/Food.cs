@@ -12,7 +12,7 @@ public class Food : MonoBehaviour, IInteractable
     [SerializeField] private RectTransform Ping;
     [SerializeField] private bool isHooked;
     
-
+    public FishingMinigame fishin;
 
     private FoodScatterer scatterer;
 
@@ -22,6 +22,7 @@ public class Food : MonoBehaviour, IInteractable
     private MeshRenderer myMR;
 
     private void Start() {
+        
         transform.GetChild(0).localEulerAngles = new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
         myMR = transform.GetChild(0).GetComponent<MeshRenderer>();
         scatterer = GameObject.FindGameObjectWithTag("Scatterer").GetComponent<FoodScatterer>();
@@ -50,9 +51,14 @@ public class Food : MonoBehaviour, IInteractable
         hunger.setHunger(25f);
         if(isHooked){
             hunger.hooked();
+            
+
+            UiManager uifish = GameObject.FindGameObjectWithTag("UiManager").GetComponent<UiManager>();
+            uifish.activateFishing();
+
             Debug.Log("Ouch");
             //do stuff
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Catch();
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Catch();
         }
         scatterer.Recycle(gameObject);
 

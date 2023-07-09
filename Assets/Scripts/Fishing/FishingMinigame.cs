@@ -39,6 +39,8 @@ public class FishingMinigame : MonoBehaviour
     bool pause = false;
     
     [SerializeField] float failTimer = 10f;
+
+    public bool gotAway;
     private void Update()
     {
         if(pause) {return;}
@@ -49,6 +51,7 @@ public class FishingMinigame : MonoBehaviour
     }
     private void Start()
     {
+        gameObject.SetActive(false);
         Resize();
     }
 
@@ -71,6 +74,7 @@ public class FishingMinigame : MonoBehaviour
             if (failTimer < 0f)
             {
                 Lose();
+                gotAway = true;
             }
         }
 
@@ -82,6 +86,7 @@ public class FishingMinigame : MonoBehaviour
         if (hookProgress >= 1f)
         {
             Win();
+            gotAway = false;
         }
         hookProgress = Mathf.Clamp(hookProgress, 0f, 1f);
     }
@@ -89,6 +94,9 @@ public class FishingMinigame : MonoBehaviour
     private void Win()
     {
         pause = true;
+        PlayerController player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player.Catch();
+        gameObject.SetActive(false);
         Debug.Log("Caught");
     }
 
@@ -186,4 +194,13 @@ public class FishingMinigame : MonoBehaviour
         fishPosition = Mathf.Clamp(fishPosition, fishSize / 2 ,1 - fishSize/2);
         fish.position = Vector3.Lerp(bottomPivot.position, topPivot.position, fishPosition);
     }
+
+
+    public bool didGetAway()
+    {
+        return gotAway;
+    }
+
+
+
 }

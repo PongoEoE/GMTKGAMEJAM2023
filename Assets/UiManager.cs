@@ -17,6 +17,8 @@ public class UiManager : MonoBehaviour
     [Header("Timer Settings")]
     public float currentTime;
     public bool countDown;
+
+    public GameObject fishin;
     void Start()
     {
         hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
@@ -40,6 +42,11 @@ public class UiManager : MonoBehaviour
 
     public void SetStamina(float stamina) {
         staminaUI.rectTransform.sizeDelta = new Vector2((stamina/100) * 250f, 15f);
+    }
+
+    public void activateFishing()
+    {
+        fishin.SetActive(true);
     }
 
 
