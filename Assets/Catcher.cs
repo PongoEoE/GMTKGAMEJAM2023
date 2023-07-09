@@ -45,6 +45,6 @@ public class Catcher : MonoBehaviour
     }
 
     public void QueueEndScreen(){
-        Instantiate(endScreen);
+        Instantiate(endScreen).GetComponent<EndScreen>().SetDemise("Hooked!");
     }
 }
