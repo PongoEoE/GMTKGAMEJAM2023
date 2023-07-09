@@ -37,7 +37,8 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] float hookProgressDegradationPower = 6f;
 
     [SerializeField] Image hookSpriteRenderer;
-    [SerializeField] Transform progressBarContainer;
+    [SerializeField] RectTransform progressBarContainer;
+    [SerializeField] RectTransform escapeBar;
 
     bool pause = false;
     
@@ -83,14 +84,14 @@ public class FishingMinigame : MonoBehaviour
 
     private void progressCheck()
     {
-        Vector3 ls = progressBarContainer.localScale;
-        ls.y = hookProgress;
-        progressBarContainer.localScale = ls;
-
+        //Vector3 ls = progressBarContainer.localScale;
+        //ls.y = hookProgress;
+        progressBarContainer.sizeDelta = new Vector2(15f, 90f*hookProgress);
+        escapeBar.sizeDelta = new Vector2(15f, (10f-failTimer)/10f*90f);
         float min = hookPosition - hookSize / 2;
         float max = hookPosition + hookSize / 2;
 
-        if (min < fishPosition && fishPosition < max)
+        if ((min < fishPosition && fishPosition < max) || fishPosition > 0.85f || fishPosition < 0.15f )
         {
             hookProgress += hookPower * Time.deltaTime;
         } else {
@@ -102,12 +103,6 @@ public class FishingMinigame : MonoBehaviour
                 Lose();
                 gotAway = true;
             }
-        }
-
-        if (fishPosition > 0.85f || fishPosition < 0.15f )
-        {
-            hookProgress += hookPower * Time.deltaTime;
-
         }
 
         if(fishPosition < 0.15f) {
@@ -223,12 +218,12 @@ public class FishingMinigame : MonoBehaviour
 
         fishPosition += hookPullVelocity;
 
-        if(fishPosition - fishSize / 2 <0f && hookPullVelocity < 0f)
+        if(fishPosition <= 0.02f && hookPullVelocity < 0f)
         {
             hookPullVelocity = 0f;
         }
 
-        if(fishPosition + fishSize / 2 >= 1f && hookPullVelocity > 1f)
+        if(fishPosition >= 0.98f  && hookPullVelocity > 0f)
         {
             hookPullVelocity = 0f;
         }
