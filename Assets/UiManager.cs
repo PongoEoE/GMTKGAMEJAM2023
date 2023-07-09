@@ -47,6 +47,7 @@ public class UiManager : MonoBehaviour
     public void activateFishing()
     {
         fishin.SetActive(true);
+        fishin.GetComponent<FishingMinigame>().lived();
     }
 
 

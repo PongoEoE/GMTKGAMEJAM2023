@@ -45,15 +45,31 @@ public class FishingMinigame : MonoBehaviour
     {
         if(pause) {return;}
 
+ 
         Fish();
         Hook();
         progressCheck();
     }
     private void Start()
     {
+  
+        pause = false;
         gameObject.SetActive(false);
         Resize();
     }
+
+    void OnEnable()
+    {
+        if (gotAway == true)
+        {
+            failTimer = 10f;
+            fishPosition = .5f;
+            hookProgress = 0f;
+            //progressBarContainer.localScale.y= 1;
+        }
+    }
+
+
 
     private void progressCheck()
     {
@@ -103,6 +119,8 @@ public class FishingMinigame : MonoBehaviour
     private void Lose()
     {
         pause = true;
+        gameObject.SetActive(false);
+        //++ to the num of hooks and lived
         Debug.Log("Not Caught");
     }
     private void Resize()
@@ -200,6 +218,13 @@ public class FishingMinigame : MonoBehaviour
     {
         return gotAway;
     }
+
+    public void lived()
+    {
+        pause = false;
+    }
+        
+    
 
 
 
