@@ -14,9 +14,10 @@ public class EndScreen : MonoBehaviour
     void Start()
     {
         Hunger hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
-        time.text = "Time Alive: " + GameObject.FindGameObjectWithTag("UiManager").GetComponent<UiManager>().currentTime.ToString();
+        time.text = "Time Alive: " + Mathf.Round(GameObject.FindGameObjectWithTag("UiManager").GetComponent<UiManager>().currentTime).ToString();
         food.text = "Food Eaten: " + hunger.getFoodEaten().ToString();
         hooked.text = "Hooks Escaped: " + (hunger.getTimesHooked()-1f).ToString();
+        GameObject.FindGameObjectWithTag("UiManager").SetActive(false);
     }
 
     // Update is called once per frame

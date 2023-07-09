@@ -39,6 +39,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private Animator myAnimator;
     [SerializeField] private GameObject catcher;
 
+    [SerializeField] private GameObject endScreen;
+
+    [SerializeField] private GameObject fishingGame;
+    public bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +71,7 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(0) && !lockControls) {
             Dash();
         }
 
@@ -83,6 +88,11 @@ public class PlayerController : MonoBehaviour
         } else {
             rb.useGravity = false;
             lockControls = false;
+        }
+
+        if(fishingGame.activeSelf){
+            lockControls = true;
+            rb.velocity = Vector3.zero;
         }
         
     }
@@ -116,7 +126,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = finalVelocity;
             }
 
-            if(finalVelocity.magnitude != 0f) {
+            if(finalVelocity.magnitude != 0f && !lockControls) {
                 myAnimator.SetFloat("Speed", 1f);
             } else {
                 myAnimator.SetFloat("Speed", 0.35f);
@@ -124,6 +134,10 @@ public class PlayerController : MonoBehaviour
 
             if(timeSinceLastDash < 0.8f) {
                 myAnimator.SetFloat("Speed", dashCurve.Evaluate(timeSinceLastDash)+1f);
+            }
+
+            if(fishingGame.activeSelf){
+                myAnimator.SetFloat("Speed", 3f);
             }
 
             Vector3 dashFinal = Vector3.Lerp(Vector3.zero, DashVector, dashCurve.Evaluate(timeSinceLastDash));
@@ -149,8 +163,20 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Die(){
+        isDead = true;
+        hunger.hooked();
         myAnimator.SetTrigger("Starve");
         lockControls = true;
         sensitivity = 0f;
+        StartCoroutine(QueueEndScreen());
+    }
+
+    IEnumerator QueueEndScreen() {
+        yield return new WaitForSeconds(1f);
+        Instantiate(endScreen).GetComponent<EndScreen>().SetDemise("Starved!");
+    }
+
+    public void SetControlLock(bool _lock) {
+        lockControls = _lock;
     }
 }

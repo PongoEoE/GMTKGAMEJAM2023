@@ -55,6 +55,7 @@ public class Food : MonoBehaviour, IInteractable
 
             UiManager uifish = GameObject.FindGameObjectWithTag("UiManager").GetComponent<UiManager>();
             uifish.activateFishing();
+            
 
             Debug.Log("Ouch");
             //do stuff

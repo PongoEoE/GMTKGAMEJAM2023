@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &669059045 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7449003080185714418, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-  m_PrefabInstance: {fileID: 4373905721173531127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &888895284
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,17 +191,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1221363454 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3240387365761938345, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-  m_PrefabInstance: {fileID: 4373905721173531127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1807092649
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,17 +328,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &2032216764 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6045797253361805183, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-  m_PrefabInstance: {fileID: 4373905721173531127}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2070524630
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,37 +538,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3864715929971534728, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-      propertyPath: food
-      value: 
-      objectReference: {fileID: 669059045}
-    - target: {fileID: 3864715929971534728, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-      propertyPath: time
-      value: 
-      objectReference: {fileID: 1221363454}
-    - target: {fileID: 3864715929971534728, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-      propertyPath: hooked
-      value: 
-      objectReference: {fileID: 2032216764}
     - target: {fileID: 5701879416863546626, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
       propertyPath: m_Name
       value: EndScreenPrefab
-      objectReference: {fileID: 0}
-    - target: {fileID: 5979153102928535778, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ad8d650b01c47df43a5d50c89f8be6a9, type: 2}
-    - target: {fileID: 6045797253361805183, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-      propertyPath: m_text
-      value: 'Hooks Escaped: XYZ'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7847537970390147145, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7847537970390147145, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

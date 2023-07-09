@@ -33,6 +33,7 @@ public class Hunger : MonoBehaviour
   //[SerializeField] private StarterAssetsInputs playerInput;
 
   public static UnityAction PlayerDeath;
+  private PlayerController player;
 
 
   private void Start() 
@@ -40,6 +41,7 @@ public class Hunger : MonoBehaviour
     {
         currentHunger = maxHunger;
         currentStamina = maxStamina;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
   }
 
@@ -48,10 +50,10 @@ public class Hunger : MonoBehaviour
     //change max hunger & hunger rate to change how long you will last
     currentHunger -= hungerRate * Time.deltaTime;
 
-    if (currentHunger <= 0)
+    if (currentHunger <= 0 && !player.isDead)
     {
         //PlayerDeath.Invoke();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Die();
+        player.Die();
         currentHunger = 0;
     }
 

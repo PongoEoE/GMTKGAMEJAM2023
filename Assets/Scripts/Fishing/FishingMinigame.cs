@@ -60,6 +60,7 @@ public class FishingMinigame : MonoBehaviour
 
     void OnEnable()
     {
+        
         if (gotAway == true)
         {
             failTimer = 10f;
@@ -119,6 +120,7 @@ public class FishingMinigame : MonoBehaviour
     private void Lose()
     {
         pause = true;
+        
         gameObject.SetActive(false);
         //++ to the num of hooks and lived
         Debug.Log("Not Caught");
