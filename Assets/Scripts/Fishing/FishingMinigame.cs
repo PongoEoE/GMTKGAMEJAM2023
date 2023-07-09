@@ -18,7 +18,7 @@ public class FishingMinigame : MonoBehaviour
     float fishDestination;
     float fishTimer;
 
-    [SerializeField] float timerMultiplicator = 3f;
+    private float timerMultiplicator = 3f;
 
     float fishSpeed;
 
@@ -69,6 +69,7 @@ public class FishingMinigame : MonoBehaviour
     {
 
         hookPower = Mathf.Lerp(0.4f, 0.15f, hunger.getStamina()/100f);
+        timerMultiplicator = Mathf.Lerp(1f, 3f, hunger.getStamina()/100f);
         if (gotAway == true)
         {
             failTimer = 10f;
