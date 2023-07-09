@@ -31,6 +31,7 @@ public class Hunger : MonoBehaviour
 
   [Header("Player References")]
   //[SerializeField] private StarterAssetsInputs playerInput;
+  private GameObject fishingGame;
 
   public static UnityAction PlayerDeath;
   private PlayerController player;
@@ -41,6 +42,7 @@ public class Hunger : MonoBehaviour
     {
         currentHunger = maxHunger;
         currentStamina = maxStamina;
+        fishingGame = GameObject.FindGameObjectWithTag("UiManager").GetComponent<UiManager>().fishin;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
   }
@@ -48,7 +50,9 @@ public class Hunger : MonoBehaviour
   private void Update() 
   {
     //change max hunger & hunger rate to change how long you will last
-    currentHunger -= hungerRate * Time.deltaTime;
+    if(!fishingGame.activeSelf) {
+      currentHunger -= hungerRate * Time.deltaTime;
+    }
 
     if (currentHunger <= 0 && !player.isDead)
     {
@@ -58,7 +62,7 @@ public class Hunger : MonoBehaviour
     }
 
     currentRechargeDelay += Time.deltaTime;
-    if(currentRechargeDelay >= staminaRechargeDelay && currentStamina < maxStamina) {
+    if(currentRechargeDelay >= staminaRechargeDelay && currentStamina < maxStamina && !fishingGame.activeSelf) {
       currentStamina += staminaRecharge*Time.deltaTime;
       currentStamina = Mathf.Min(currentStamina, maxStamina);
     }

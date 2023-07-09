@@ -16,13 +16,15 @@ public class Food : MonoBehaviour, IInteractable
 
     private FoodScatterer scatterer;
 
+    public ParticleSystem particles;
+
     //[SerializeField] float currentHunger = player.getComponent<Hunger>().getHunger();
     private Transform player;
     private float offset;
     private MeshRenderer myMR;
 
     private void Start() {
-        
+        particles.transform.parent = null;
         transform.GetChild(0).localEulerAngles = new Vector3(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
         myMR = transform.GetChild(0).GetComponent<MeshRenderer>();
         scatterer = GameObject.FindGameObjectWithTag("Scatterer").GetComponent<FoodScatterer>();
@@ -61,6 +63,8 @@ public class Food : MonoBehaviour, IInteractable
             //do stuff
             //GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Catch();
         }
+        particles.transform.position = transform.position;
+        particles.Play();
         scatterer.Recycle(gameObject);
 
         return true;
