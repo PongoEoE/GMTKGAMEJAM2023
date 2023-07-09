@@ -10,6 +10,7 @@ public class Catcher : MonoBehaviour
     private Vector3 startPos;
     private Quaternion startRot;
     [SerializeField] private AnimationCurve lerpCurve;
+    [SerializeField] private GameObject endScreen;
     void Start()
     {
         PullCamera();
@@ -30,16 +31,20 @@ public class Catcher : MonoBehaviour
     }
 
     IEnumerator CameraCoroutine()
-{
-    Debug.Log("Coroutine started...");
-    while (Time.time - timeStarted < 1f)
-
     {
-        Camera.main.transform.position = Vector3.Lerp(startPos, cameraPos.position, lerpCurve.Evaluate(Time.time - timeStarted));
-        Camera.main.transform.rotation = Quaternion.Lerp(startRot, cameraPos.rotation, lerpCurve.Evaluate(Time.time - timeStarted));
-        Debug.Log(lerpCurve.Evaluate(timeStarted - Time.time));
-        yield return null;
+        Debug.Log("Coroutine started...");
+        while (Time.time - timeStarted < 1f)
+
+        {
+            Camera.main.transform.position = Vector3.Lerp(startPos, cameraPos.position, lerpCurve.Evaluate(Time.time - timeStarted));
+            Camera.main.transform.rotation = Quaternion.Lerp(startRot, cameraPos.rotation, lerpCurve.Evaluate(Time.time - timeStarted));
+            Debug.Log(lerpCurve.Evaluate(timeStarted - Time.time));
+            yield return null;
+        }
+        Debug.Log("Coroutine ended");
     }
-    Debug.Log("Coroutine ended");
-}
+
+    public void QueueEndScreen(){
+        Instantiate(endScreen);
+    }
 }

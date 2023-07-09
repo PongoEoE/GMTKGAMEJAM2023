@@ -99,4 +99,12 @@ public class Hunger : MonoBehaviour
   {
     numHooked++;
   }
+
+  public float getFoodEaten(){
+    return numEaten;
+  }
+
+  public float getTimesHooked(){
+    return numHooked;
+  }
 }

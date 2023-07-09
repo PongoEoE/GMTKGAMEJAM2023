@@ -262,6 +262,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  endScreen: {fileID: 5701879416863546626, guid: f33314425c4d2544c9c894c9c994fba3, type: 3}
 --- !u!1 &1595544761124978515
 GameObject:
   m_ObjectHideFlags: 0
