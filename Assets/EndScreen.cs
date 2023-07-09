@@ -13,6 +13,7 @@ public class EndScreen : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         Hunger hunger = GameObject.FindGameObjectWithTag("Player").GetComponent<Hunger>();
         time.text = "Time Alive: " + Mathf.Round(GameObject.FindGameObjectWithTag("UiManager").GetComponent<UiManager>().currentTime).ToString();
         food.text = "Food Eaten: " + hunger.getFoodEaten().ToString();
