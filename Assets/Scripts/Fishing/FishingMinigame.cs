@@ -9,6 +9,9 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] Transform topPivot;
     [SerializeField] Transform bottomPivot;
     [SerializeField] Transform fish;
+
+    [SerializeField] private Animator crab;
+    [SerializeField] private Animator net;
     // Start is called before the first frame update
 
     [SerializeField]float fishPosition;
@@ -98,6 +101,19 @@ public class FishingMinigame : MonoBehaviour
         if (fishPosition == 1 || fishPosition == 0 )
         {
             hookProgress += hookPower * Time.deltaTime;
+
+        }
+
+        if(fishPosition == 0) {
+            crab.SetBool("Action", true);
+        } else {
+            crab.SetBool("Action", false);
+        }
+
+        if(fishPosition == 1) {
+            net.SetBool("Action", true);
+        } else {
+            net.SetBool("Action", false);
         }
 
         if (hookProgress >= 1f)
