@@ -44,6 +44,8 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] float failTimer = 10f;
 
     public bool gotAway;
+    private AudioSource miniSFX;
+
     private void Update()
     {
         if(pause) {return;}
@@ -63,6 +65,7 @@ public class FishingMinigame : MonoBehaviour
 
     void OnEnable()
     {
+
         
         if (gotAway == true)
         {
